@@ -17,6 +17,15 @@ You can install the necessary dependencies using:
 pip install tensorflow numpy matplotlib
 ```
 
+## Usage
+- Ensure all dependencies are installed.
+- Run the script to train the 'FpuWaveNet' model.
+- Monitor the loss and speed history for training progress.
+- Run and download the functions to animate the model's findings.
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
 ## Code Overview
 
 ### Learning Rate Schedule
@@ -178,12 +187,3 @@ loss_history, speed_history = train(model, n_epochs, N, t_range, alpha)
 ```
 
 Functions to plot the loss history, wave speed estimation convergence, and create animations of the travlling waves are provided.
-
-### Usage
-- Ensure all dependencies are installed.
-- Run the script to train the 'FpuWaveNet' model.
-- Monitor the loss and speed history for training progress.
-- Run and download the functions to animate the model's findings.
-
-### License
-This project is licensed under the MIT License. See the LICENSE file for more details.
