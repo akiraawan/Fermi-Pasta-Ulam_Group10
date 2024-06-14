@@ -31,7 +31,7 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 
 ### Learning Rate Schedule
 
-The 'LearningRateSchedule' class defines a custom learning rate schedule that decays the learning rate over time.
+The `LearningRateSchedule` class defines a custom learning rate schedule that decays the learning rate over time.
 
 ```python
 import tensorflow as tf
@@ -47,7 +47,7 @@ class LearningRateSchedule(tf.keras.optimizers.schedules.LearningRateSchedule):
 ```
 
 ### Characteristic Layer
-The 'CharacteristicLayer' class defines a custom layer that adjusts the wave speed based on a learnable parameter snn. It performes a transformation using the travelling wave ansatz in order to force travelling wave solutions.
+The `CharacteristicLayer` class defines a custom layer that adjusts the wave speed based on a learnable parameter `snn`. It performs a transformation using the travelling wave ansatz in order to force travelling wave solutions.
 
 The initializer can be changed to allow travelling waves with various wave speeds.
 
@@ -66,7 +66,7 @@ class CharacteristicLayer(tf.keras.layers.Layer):
 ```
 
 ### FPU WaveNet Model
-The 'FpuWaveNet' class defines the main model, comprising the characteristic layer and two separate dense networks for predicting q and p values. Here, q is the dispalcement of the particles from equilibrium and p is their momentum. 
+The `FpuWaveNet` class defines the main model, comprising the characteristic layer and two separate dense networks for predicting q and p values. Here, q is the displacement of the particles from equilibrium and p is their momentum.
 
 ```python
 class FpuWaveNet(tf.keras.Model):
@@ -97,11 +97,11 @@ class FpuWaveNet(tf.keras.Model):
 ```
 
 ### Loss Function
-The 'loss_function' computes the loss for training the model, considering residuals and boundary conditions. 
-- Loss_GE is the standard L2 loss of the governance function, which determines the behaviour of the system; it ensures we get solutions to the FPUT system. 
-- Loss_BC imposes the Neumann boudnary conditions which rewards the system for finding solutions with derivatives that decay towards the edges of the simulated boundary (this aligns with physical intuition as it prevents sharp changes). 
-- Loss_Limit penalises the system if the particles towards the edges are not at rest. This is valid since the FPUT system has the particles at the 2 ends fixed, giving them both zero displacement and momentum. 
-- Loss_Trans has the effect of reducing a family of travelling waves to a single principle candidate by centering it at the origin of the spatial domian. The motivation for this condition comes from the fact that a translation of a travelling wave is still a travelling wave (this is a phase shift).  
+The `loss_function` computes the loss for training the model, considering residuals and boundary conditions.
+- Loss_GE is the standard L2 loss of the governance function, which determines the behavior of the system; it ensures we get solutions to the FPUT system.
+- Loss_BC imposes the Neumann boundary conditions which rewards the system for finding solutions with derivatives that decay towards the edges of the simulated boundary (this aligns with physical intuition as it prevents sharp changes).
+- Loss_Limit penalises the system if the particles towards the edges are not at rest. This is valid since the FPUT system has the particles at the 2 ends fixed, giving them both zero displacement and momentum.
+- Loss_Trans has the effect of reducing a family of travelling waves to a single principle candidate by centering it at the origin of the spatial domain. The motivation for this condition comes from the fact that a translation of a travelling wave is still a travelling wave (this is a phase shift).
 
 ```python
 def loss_function(model, t_points, indices, alpha):
@@ -133,7 +133,7 @@ def loss_function(model, t_points, indices, alpha):
 ```
 
 ### Training Function
-The 'train' function trains the model using separate optimizers for wave speed and network weights, recording loss and speed history. As shown, the learning rate decays by a factor of 0.9 every 1000 epochs.
+The `train` function trains the model using separate optimizers for wave speed and network weights, recording loss and speed history. As shown, the learning rate decays by a factor of 0.9 every 1000 epochs.
 
 ```python
 def train(model, epochs, N, t_range, alpha):
