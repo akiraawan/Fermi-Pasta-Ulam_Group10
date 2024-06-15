@@ -19,7 +19,7 @@ pip install tensorflow numpy matplotlib
 
 ## Usage
 - Ensure all dependencies are installed.
-- Run the script to train the 'FpuWaveNet' model.
+- Run the script to train the `FpuWaveNet` model.
 - Monitor the loss and speed history for training progress.
 - Download and run the functions to animate the model's findings.
 - We recommend storing the model weights via model.save_weights(path_to_file) and model.load_weights(path_to_file) for reproducibility. 
